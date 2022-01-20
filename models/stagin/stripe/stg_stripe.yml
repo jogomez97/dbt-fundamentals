@@ -2,11 +2,22 @@ version: 2
 
 models:
   - name: stg_payments
+    description: A unique transaction per row.
     columns:
       - name: payment_id
+        description: Primary key for stg_payments.
         tests:
           - unique
           - not_null
       - name: order_id
+        description: Foreign key to stg_orders for stg_payments.
         tests:
           - not_null
+      - name: payment_method
+        description: "{{ doc('payment_method') }}"
+      - name: status
+        description: "{{ doc('payment_status') }}"
+      - name: amount
+        description: Amount in dolars of the payment.
+      - name: created_date
+        description: Date when the payment was done
