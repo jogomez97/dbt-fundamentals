@@ -9,6 +9,6 @@ WITH payments AS (
         amount / 100 as amount,
         created AS created_date
     
-    FROM raw.stripe.payment
+    FROM {{ source('stripe', 'payment') }}
 )
 SELECT * FROM payments
